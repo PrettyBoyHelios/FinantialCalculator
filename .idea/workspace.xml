@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbab94bc-8038-4b63-8136-cd9e7c35509a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Calculator/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Calculator/static/images/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Calculator/static/images/favicon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Calculator/templates/Calculator/alternatives.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Calculator/templates/Calculator/header.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Calculator/templates/Calculator/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Calculator/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Calculator/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Calculator/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Calculator/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/templates/Calculator/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Calculator/templates/Calculator/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,13 +37,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="395" />
+          <entry key="html" value="551" />
           <entry key="py" value="853" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="395" />
+          <entry key="HTML" value="551" />
           <entry key="Python" value="853" />
         </counts>
       </usages-collector>
@@ -100,11 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Calculator/templates/Calculator/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="36" selection-end-column="14" />
+            <state relative-caret-position="135">
+              <caret line="9" column="98" selection-start-line="9" selection-start-column="98" selection-end-line="9" selection-end-column="98" />
             </state>
           </provider>
         </entry>
@@ -149,7 +141,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Calculator/templates/Calculator/header.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="446">
@@ -184,11 +176,11 @@
         <option value="$PROJECT_DIR$/FinCalc/settings.py" />
         <option value="$PROJECT_DIR$/Calculator/admin.py" />
         <option value="$PROJECT_DIR$/Calculator/forms.py" />
-        <option value="$PROJECT_DIR$/Calculator/templates/Calculator/index.html" />
         <option value="$PROJECT_DIR$/Calculator/models.py" />
         <option value="$PROJECT_DIR$/Calculator/views.py" />
         <option value="$PROJECT_DIR$/Calculator/templates/Calculator/alternatives.html" />
         <option value="$PROJECT_DIR$/Calculator/templates/Calculator/header.html" />
+        <option value="$PROJECT_DIR$/Calculator/templates/Calculator/index.html" />
       </list>
     </option>
   </component>
@@ -309,7 +301,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2588055" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.25753424" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -397,13 +389,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Calculator/templates/Calculator/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="36" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Calculator/templates/Calculator/alternatives.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -415,6 +400,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="446">
           <caret line="68" column="125" selection-start-line="68" selection-start-column="125" selection-end-line="68" selection-end-column="125" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Calculator/templates/Calculator/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="98" selection-start-line="9" selection-start-column="98" selection-end-line="9" selection-end-column="98" />
         </state>
       </provider>
     </entry>
