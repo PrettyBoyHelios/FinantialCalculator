@@ -3,35 +3,13 @@
     <title>Home</title>
 {% endblock %}
 {% block content %}
-    <div class="container">
-        <h1>Financial Calculator</h1>
-        <p>What do you want to do?</p>
-        <input type="'button" value="Conversions"/>
-        <input type="'button" value="Proposal Evaluation"/>
-    </div>
-
-    <div class=""container>
-        <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="https://image.flaticon.com/icons/png/512/189/189093.png" alt="Card image cap">
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-    </div>
-
-    <div class="jumbotron">
-  <h1 class="display-4">Hello, world!</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+<div class="jumbotron">
+  <h1 class="display-4">This is a Financial Calculator</h1>
+  <p class="lead">Calculate your future</p>
   <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p>You can perform simple conversions and evaluate and compare multiple investment alternatives!</p>
   <p class="lead">
     <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
   </p>
 </div>
-
-    <form action="/list_alter/" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
 {% endblock %}
