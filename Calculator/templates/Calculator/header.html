@@ -7,15 +7,19 @@
     {% endblock %}
 
     {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="shortcut icon" type="image/png" href="https://image.flaticon.com/icons/png/512/189/189093.png"/>
+
+    <!-- Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Poppins" rel="stylesheet">
 
-    <!-- Material Design -->
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <!-- Material Design for Bootstrap fonts and icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.0.0-beta.4/dist/css/bootstrap-material-design.min.css" integrity="sha384-R80DC0KVBO4GSTw+wZ5x2zn2pu4POSErBkf8/fSFhPXHxvHJydT0CSgAP2Yo2r4I" crossorigin="anonymous">
 
+    <!-- Material Design for Bootstrap CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
     <style>
         * {
             font-family: 'Noto Sans', sans-serif;
@@ -45,7 +49,7 @@
 </head>
 <body class="body">
     <div>
-        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark justify-content-between">
+        <nav class="navbar navbar-dark bg-dark sticky-top navbar-expand-lg justify-content-between">
 {% comment %}
           <a class="navbar-brand" href="#"> <img src="../../static/images/favicon.png" width="25" height="25" class="d-inline-block align-top"/> Yournals</a>
 {% endcomment %}
@@ -57,10 +61,10 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item active">
-                <a class="nav-link" href="/yournals/"><i class="fas fa-home"></i> Home</a>
+                <a class="nav-link" href="/calc/"><i class="fas fa-home"></i> Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/yournals/myposts/"><i class="fas fa-pencil-alt"></i> Compare Alternatives</a>
+                <a class="nav-link" href="/calc/alt/"><i class="fas fa-pencil-alt"></i> Compare Alternatives</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/yournals/myposts/favs"><span class="fas fa-heart"></span> Conversions</a>
