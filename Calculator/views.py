@@ -19,3 +19,10 @@ def create_alternative(request):
         pass
     return render(request, "Calculator/alternatives_list.html")
 
+
+def interest_conversions(request):
+    return render(request, "Calculator/interest.html")
+
+
+def conversions(request):
+    return render(request, "Calculator/conversions.html")
