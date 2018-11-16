@@ -5,9 +5,13 @@
 {% block content %}
     <br/>
     <div class="container">
-        <h1>
+        <h1 style="display: inline-block;">
             Alternatives
         </h1>
+        <form method="get" action="{% url "create_alternative" %}" style="float: right">
+            <button type="submit" class="btn btn-outline-dark" style="float: right"> <i class="fas fa-plus"></i></button>
+        </form>
+
     </div>
     <div class="container">
         <table class="table">

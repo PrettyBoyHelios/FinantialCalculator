@@ -6,9 +6,16 @@ from Calculator.models import AlternativeForm
 def index(request):
     return render(request, "Calculator/index.html")
 
-def alternatives_list(request):
 
+def alternatives_list(request):
     return render(request, "Calculator/alternatives.html")
 
+
 def create_alternative(request):
+    if request.method == 'GET':
+        form = AlternativeForm()
+        return render(request, "Calculator/create_alternative.html", {'form': form})
+    else:
+        pass
     return render(request, "Calculator/alternatives_list.html")
+

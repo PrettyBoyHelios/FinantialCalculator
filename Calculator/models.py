@@ -18,4 +18,4 @@ class Alternative(models.Model):
 class AlternativeForm(ModelForm):
     class Meta:
         model = Alternative
-        fields = ['name', 'interest','interest_type']
+        fields = ['name', 'interest','interest_type', 'operative_costs']
