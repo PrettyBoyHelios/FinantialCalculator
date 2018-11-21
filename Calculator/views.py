@@ -1,6 +1,6 @@
 from django.shortcuts import render
-#from django.http import HttpRespose
-from Calculator.models import AlternativeForm
+from django.http import HttpResponse
+from Calculator.models import AlternativeForm, Alternative
 # Create your views here.
 
 def index(request):
@@ -8,7 +8,9 @@ def index(request):
 
 
 def alternatives_list(request):
-    return render(request, "Calculator/alternatives.html")
+    altList = Alternative.objects.all()
+    context = { 'alts':altList }
+    return render(request, "Calculator/alternatives.html", context)
 
 
 def create_alternative(request):
@@ -16,6 +18,19 @@ def create_alternative(request):
         form = AlternativeForm()
         return render(request, "Calculator/create_alternative.html", {'form': form})
     else:
-        pass
-    return render(request, "Calculator/alternatives_list.html")
+        form = AlternativeForm(request.POST)
+        if form.is_valid():
+            alternative = form.save(commit=False)
+            alternative.save()
+            return render(request, "Calculator/alternatives.html")
+        else:
+            return HttpResponse("Invalid form")
 
+
+
+def interest_conversions(request):
+    return render(request, "Calculator/interest.html")
+
+
+def conversions(request):
+    return render(request, "Calculator/conversions.html")
