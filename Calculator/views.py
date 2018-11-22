@@ -22,7 +22,8 @@ def create_alternative(request):
         if form.is_valid():
             alternative = form.save(commit=False)
             alternative.save()
-            return render(request, "Calculator/alternatives.html")
+            #return render(request, "Calculator/alternatives.html")
+            return alternatives_list(request)
         else:
             return HttpResponse("Invalid form")
 
