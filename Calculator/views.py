@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from Calculator.models import ConversionForm, AlternativeForm, Alternative, Conversion, InterestForm, Interest
+import numpy as np
 # Create your views here.
 
 def index(request):
@@ -11,7 +12,11 @@ def compare(request):
     altList = Alternative.objects.filter(is_selected=True)
     context = {'alts': altList}
 
-    # Logic for canculating values
+    currentAlt = altList[0]
+    # Logic for calculating values
+    arr = np.zeros(currentAlt.n_periods)
+    arr[0] = currentAlt.investment
+    print(arr)
 
     return render(request, "Calculator/compare.html", context)
 
