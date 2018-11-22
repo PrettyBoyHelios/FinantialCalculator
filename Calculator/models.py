@@ -19,3 +19,18 @@ class AlternativeForm(ModelForm):
     class Meta:
         model = Alternative
         fields = ['name', 'interest','interest_type', 'operative_costs']
+
+
+class Interest(models.Model):
+    nominal = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
+    capitalizations= models.PositiveIntegerField(default=0)
+    efective = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
+    periodic = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
+
+
+class InterestForm(ModelForm):
+    class Meta:
+        model = Interest
+        fields = ['nominal', 'capitalizations','efective', 'periodic']
+
+
