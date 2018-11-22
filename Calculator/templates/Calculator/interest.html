@@ -3,5 +3,15 @@
     <title>Interest</title>
 {% endblock %}
 {% block content %}
-    <p>Interest Stuff goes here</p>
+    <br/>
+    <div class="container col-md-8" >
+            <form method="post" action="{%  url "interest_conversions" %}">
+                <h1>Interest Calculator</h1>
+                {% csrf_token %}
+
+                {{ form }}
+                <button type="submit" class="btn btn-outline-dark"> Calculate</button>
+
+            </form>
+        </div>
 {% endblock %}

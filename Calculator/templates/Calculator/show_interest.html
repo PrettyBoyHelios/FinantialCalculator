@@ -1,16 +1,17 @@
 {%  extends "Calculator/header.html" %}
 {% block title %}
-    <title>Conversions</title>
+    <title>Interest</title>
 {% endblock %}
-
 {% block content %}
     <br/>
     <div class="container col-md-8" >
-            <form method="post" action="{%  url "conversions" %}">
-                <h1>New Conversion</h1>
+            <form method="post" action="{%  url "show_interest" %}">
+                <h1>Interest Calculator2</h1>
                 {% csrf_token %}
+
                 {{ form }}
                 <button type="submit" class="btn btn-outline-dark"> Calculate</button>
+
             </form>
         </div>
 {% endblock %}
