@@ -51,3 +51,18 @@ class ConversionForm(ModelForm):
     class Meta:
         model = Conversion
         fields = ['interest', 'number_periods', 'present_value', 'future_value', 'payment']
+
+
+class Interest(models.Model):
+    nominal = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
+    capitalizations= models.PositiveIntegerField(default=0)
+    efective = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
+    periodic = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
+
+
+class InterestForm(ModelForm):
+    class Meta:
+        model = Interest
+        fields = ['nominal', 'capitalizations','efective', 'periodic']
+
+

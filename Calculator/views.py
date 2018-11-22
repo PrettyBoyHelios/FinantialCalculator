@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from Calculator.models import ConversionForm, AlternativeForm, Alternative, Conversion
+from Calculator.models import ConversionForm, AlternativeForm, Alternative, Conversion, InterestForm, Interest
 # Create your views here.
 
 def index(request):
@@ -28,7 +28,22 @@ def create_alternative(request):
 
 
 def interest_conversions(request):
-    return render(request, "Calculator/interest.html")
+    if request.method == 'GET':
+        form = InterestForm()
+        return render(request, "Calculator/interest.html", {'form': form})
+    else:
+        form = InterestForm(request.POST)
+        if form.is_valid():
+            int_form = form.save(commit=False)
+            int_form.save()
+            return interest_showconversions(request)
+        else:
+            return HttpResponse("Invalid form")
+
+
+def interest_showconversions(request):
+    form = InterestForm()
+    return render(request, "Calculator/show_interest.html", {'form': form})
 
 
 def conversions(request):
