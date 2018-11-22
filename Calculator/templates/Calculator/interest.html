@@ -8,8 +8,11 @@
             <form method="post" action="{%  url "interest_conversions" %}">
                 <h1>Interest Calculator</h1>
                 {% csrf_token %}
+                <li>Nominal Interest (%): {{  form.nominal }}</li><br /><br />
+                <li>Number of Capitalizations: {{ form.capitalizations }}</li><br /><br />
+                <li>Effective Interest (%): {{ form.efective }}</li><br /><br />
+                <li>Periodic Interest (%) : {{ form.periodic }}</li><br /><br />
 
-                {{ form }}
                 <button type="submit" class="btn btn-outline-dark"> Calculate</button>
 
             </form>

@@ -5,13 +5,13 @@
 {% block content %}
     <br/>
     <div class="container col-md-8" >
-            <form method="post" action="{%  url "show_interest" %}">
-                <h1>Interest Calculator2</h1>
+                <h1>Interest Results</h1>
                 {% csrf_token %}
+        <li>Nominal Interest (%): {{ data.nominal }}</li>
+        <li>Number of Capitalizations: {{ data.capitalizations }}</li>
+        <li>Effective Interest (%): {{ data.efective }}</li>
+        <li>Periodic Interest (%) : {{ data.periodic }}</li>
 
-                {{ form }}
-                <button type="submit" class="btn btn-outline-dark"> Calculate</button>
 
-            </form>
         </div>
 {% endblock %}

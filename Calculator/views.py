@@ -36,15 +36,29 @@ def interest_conversions(request):
         form = InterestForm(request.POST)
         if form.is_valid():
             int_form = form.save(commit=False)
-            int_form.save()
-            return interest_showconversions(request)
+            #return interest_showconversions(request)
+            if int_form.nominal is not None:
+                if int_form.capitalizations is not None and int_form.capitalizations <= 365:
+                    int_form.R_M()
+                    return render(request, 'Calculator/show_interest.html', {'data': int_form })
+                elif int_form.periodic is not None:
+                    int_form.R_IP()
+                    return render(request, 'Calculator/show_interest.html', {'data': int_form})
+            elif int_form.capitalizations is not None and int_form.capitalizations <= 365:
+                if int_form.periodic is not None:
+                    int_form.IP_M()
+                    return render(request, 'Calculator/show_interest.html', {'data': int_form })
+                elif int_form.efective is not None:
+                    int_form.M_IEF()
+                    return render(request, 'Calculator/show_interest.html', {'data': int_form})
+            else:
+                return HttpResponse('Invalid data')
         else:
             return HttpResponse("Invalid form")
 
 
 def interest_showconversions(request):
-    form = InterestForm()
-    return render(request, "Calculator/show_interest.html", {'form': form})
+    return render(request, "Calculator/show_interest.html")
 
 
 def conversions(request):
