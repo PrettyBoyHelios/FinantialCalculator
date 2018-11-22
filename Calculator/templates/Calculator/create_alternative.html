@@ -1,0 +1,35 @@
+{%  extends "Calculator/header.html" %}
+{% block title %}
+    <title>Home</title>
+{% endblock %}
+{% block content %}
+    <br/>
+    <div class="container col-md-8" >
+            <form method="post" action="{%  url "create_alternative" %}">
+                <h1>New Alternative</h1>
+                {% csrf_token %}
+                {% comment %}<div class="form-group">
+                    <label for="{{ form.subject.name }}">Alternative Name:</label>
+                    <input for="{{ form.subject.name }}" type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter your project's name">
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.subject.interest }}">Interest Rate:</label>
+                    <input for="{{ form.subject.interest }}" type="number" step="any" class="form-control" aria-describedby="emailHelp" placeholder="{{ form.subject.interest.value }}">
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.subject.interest_type }}">Interest Type:</label>
+                    <input for="{{ form.subject.interest_type }}" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Fill in the interest type">
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.subject.operative_costs }}">Alternative Name:</label>
+                    <input for="{{ form.subject.operative_costs }}" type="number" step="any" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="The project's annual operative costs">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-dark"> Create</button>
+                </div>{% endcomment %}
+                {{ form }}
+                <button type="submit" class="btn btn-outline-dark"> Create</button>
+
+            </form>
+        </div>
+{% endblock %}

@@ -5,35 +5,31 @@
 {% block content %}
     <br/>
     <div class="container">
-        <h1>
+        <h1 style="display: inline-block;">
             Alternatives
         </h1>
+        <form method="get" action="{% url "create_alternative" %}" style="float: right">
+            <button type="submit" class="btn btn-outline-dark" style="float: right"> <i class="fas fa-plus"></i></button>
+        </form>
+
     </div>
     <div class="container">
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Alternative Name</th>
-              <th scope="col">Description</th>
+                <th scope="col">Alternative Name</th>
+                <th scope="col">Interest</th>
+                <th scope="col">Interest Type</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-            </tr>
+              {% for alt in alts %}
+                  <tr>
+                      <th scope="col">{{ alt.name }}</th>
+                      <th scope="col">{{ alt.interest }} %</th>
+                      <th scope="col">{{ alt.interest_type }}</th>
+                  </tr>
+              {% endfor %}
           </tbody>
         </table>
     </div>
