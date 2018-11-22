@@ -2,6 +2,15 @@
 {% block title %}
     <title>Conversions</title>
 {% endblock %}
+
 {% block content %}
-    <p>Conversion Stuff goes here</p>
+    <br/>
+    <div class="container col-md-8" >
+            <form method="post" action="{%  url "conversions" %}">
+                <h1>New Conversion</h1>
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" class="btn btn-outline-dark"> Calculate</button>
+            </form>
+        </div>
 {% endblock %}
