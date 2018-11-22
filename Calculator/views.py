@@ -8,7 +8,12 @@ def index(request):
 
 
 def compare(request):
-    pass
+    altList = Alternative.objects.filter(is_selected=True)
+    context = {'alts': altList}
+
+    # Logic for canculating values
+
+    return render(request, "Calculator/compare.html", context)
 
 def select_for_compare(request, id):
     #select item by id

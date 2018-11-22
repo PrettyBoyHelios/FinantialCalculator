@@ -17,6 +17,7 @@ class Alternative(models.Model):
     interest = models.DecimalField(max_digits=4, decimal_places=2, default=1.00)
     interest_type = models.CharField(max_length=10, choices=INTEREST_TYPE, default='nominal')
     operative_costs = models.DecimalField(max_digits=11, decimal_places=2, default=0.00)
+    n_periods = models.PositiveIntegerField(default=1)
 
 
 class AlternativeForm(ModelForm):
@@ -24,7 +25,7 @@ class AlternativeForm(ModelForm):
 
     class Meta:
         model = Alternative
-        fields = ['name', 'description', 'interest', 'interest_type', 'operative_costs']
+        fields = ['name', 'description', 'interest', 'interest_type', 'operative_costs', 'n_periods']
 
 
 class Conversion(models.Model):
