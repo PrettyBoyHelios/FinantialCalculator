@@ -7,6 +7,23 @@ def index(request):
     return render(request, "Calculator/index.html")
 
 
+def compare(request):
+    pass
+
+def select_for_compare(request, id):
+    #select item by id
+    alternative = Alternative.objects.get(pk=id)
+    alternative.is_selected = True;
+    alternative.save()
+    return alternatives_list(request)
+
+def unselect_for_compare(request, id):
+    #unselect item by id
+    alternative = Alternative.objects.get(pk=id)
+    alternative.is_selected = False
+    alternative.save()
+    return alternatives_list(request)
+
 def alternatives_list(request):
     altList = Alternative.objects.all()
     context = {'alts': altList }

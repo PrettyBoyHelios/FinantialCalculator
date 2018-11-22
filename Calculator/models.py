@@ -11,7 +11,9 @@ INTEREST_TYPE = (
 
 
 class Alternative(models.Model):
+    is_selected = models.BooleanField(default=False)
     name = models.CharField(max_length=50, default='Test')
+    description = models.TextField(max_length=200, default="")
     interest = models.DecimalField(max_digits=4, decimal_places=2, default=1.00)
     interest_type = models.CharField(max_length=10, choices=INTEREST_TYPE, default='nominal')
     operative_costs = models.DecimalField(max_digits=11, decimal_places=2, default=0.00)
@@ -22,7 +24,7 @@ class AlternativeForm(ModelForm):
 
     class Meta:
         model = Alternative
-        fields = ['name', 'interest', 'interest_type', 'operative_costs']
+        fields = ['name', 'description', 'interest', 'interest_type', 'operative_costs']
 
 
 class Conversion(models.Model):
