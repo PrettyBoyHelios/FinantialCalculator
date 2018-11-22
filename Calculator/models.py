@@ -22,7 +22,7 @@ class AlternativeForm(ModelForm):
 
     class Meta:
         model = Alternative
-        fields = ['name', 'interest','interest_type', 'operative_costs']
+        fields = ['name', 'interest', 'interest_type', 'operative_costs']
 
 
 class Conversion(models.Model):
@@ -34,7 +34,7 @@ class Conversion(models.Model):
 
     def calculate_values_given_future(self):
         self.present_value = self.future_value * (1 + self.interest / 100) ** (-self.number_periods)
-        self.payment = self.future_value * (self.interest / 100 / ((1 + self.interest) ** self.interest - 1))
+        self.payment = self.future_value * (self.interest / 100 / ((1 + self.interest / 100) ** self.number_periods - 1))
 
     def calculate_values_given_payment(self):
         self.present_value = self.payment * ((1 + self.interest / 100) ** self.number_periods - 1) / \
@@ -42,7 +42,7 @@ class Conversion(models.Model):
         self.future_value = self.payment * ((1 + self.interest / 100) ** self.number_periods - 1) / self.interest / 100
 
     def calculate_values_given_present(self):
-        self.payment = self.present_value * (self.interest * (1 + self.interest / 100) ** self.number_periods) /\
+        self.payment = self.present_value * (self.interest / 100 * (1 + self.interest / 100) ** self.number_periods) /\
                        ((1 + self.interest / 100) ** self.number_periods - 1)
         self.future_value = self.present_value * (1 + self.interest / 100) ** self.number_periods
 
