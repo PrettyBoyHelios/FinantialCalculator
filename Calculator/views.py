@@ -15,12 +15,17 @@ def compare(request):
     context = {'alts': altList}
     qty_alts = len(altList)
     vnas = np.zeros(qty_alts)
+    pmts = np.zeros(qty_alts)
 
     # if all n's are equal
     for i, alt in enumerate(altList):
         print(float(alt.interest))
         vnas[i] = np.npv(float(alt.interest)/100, get_data(alt)) #it is already total vna
-    print(vnas)
+        pmts[i] = np.pmt(float(alt.interest)/100, alt.n_periods, vnas[i])
+
+    
+
+    # if not all are equal
     return render(request, "Calculator/compare.html", context)
 
 def select_for_compare(request, id):
