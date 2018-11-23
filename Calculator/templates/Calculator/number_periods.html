@@ -1,0 +1,16 @@
+{%  extends "Calculator/header.html" %}
+{% block title %}
+    <title>Number of periods</title>
+{% endblock %}
+
+{% block content %}
+    <br/>
+    <div class="container col-md-8" >
+            <form method="post" action="{%  url "number_periods" %}">
+                <h1>Get periods</h1>
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" class="btn btn-outline-dark"> Calculate</button>
+            </form>
+        </div>
+{% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from Calculator.models import ConversionForm, AlternativeForm, Alternative, Conversion, InterestForm, Interest
+from Calculator.models import *
 # Create your views here.
 
 def index(request):
@@ -73,3 +73,33 @@ def conversions(request):
                 return HttpResponse('Invalid data')
         else:
             return HttpResponse('Invalid form')
+
+
+def number_periods(request):
+    if request.method == 'GET':
+        form = NumberPeriodsForm()
+        return render(request, 'Calculator/number_periods.html', {'form': form})
+    else:
+        form = NumberPeriodsForm(request.POST)
+        if form.is_valid():
+            form_periods = form.save(commit=False)
+            if form_periods.present_value is not None and form_periods.future_value is not None:
+                periods = form_periods.calculate_periods_given_fp()
+                return render(request, 'Calculator/number_periods_results.html', {
+                    'periods': periods
+                })
+            elif form_periods.future_value is not None and form_periods.payment is not None:
+                periods = form_periods.calculate_periods_given_fa()
+                return render(request, 'Calculator/number_periods_results.html', {
+                    'periods': periods
+                })
+            elif form_periods.present_value is not None and form_periods.payment is not None:
+                periods = form_periods.calculate_periods_given_pa()
+                return render(request, 'Calculator/number_periods_results.html', {
+                    'periods': periods
+                })
+            else:
+                return HttpResponse('Invalid Data')
+        else:
+            return HttpResponse('Invalid Form')
+

@@ -53,9 +53,31 @@ class ConversionForm(ModelForm):
         fields = ['interest', 'number_periods', 'present_value', 'future_value', 'payment']
 
 
+class NumberPeriods(models.Model):
+    interest = models.DecimalField(max_digits=9, decimal_places=2)
+    present_value = models.DecimalField(max_digits=9, decimal_places=2, blank=True)
+    future_value = models.DecimalField(max_digits=9, decimal_places=2, blank=True)
+    payment = models.DecimalField(max_digits=9, decimal_places=2, blank=True)
+
+    def calculate_periods_given_fp(self):
+        return np.ceil(np.log(float(self.future_value / self.present_value)) / np.log(float(1 + self.interest / 100)))
+
+    def calculate_periods_given_fa(self):
+        return np.ceil(np.log(float(1 + self.interest / 100 * (self.future_value / self.payment))) / np.log(float(1 + self.interest / 100)))
+
+    def calculate_periods_given_pa(self):
+        return np.ceil(-np.log(float(1 - self.interest / 100 * (self.present_value / self.payment))) / np.log(float(1 + self.interest / 100)))
+
+
+class NumberPeriodsForm(ModelForm):
+    class Meta:
+        model = NumberPeriods
+        fields = ['interest', 'present_value', 'future_value', 'payment']
+
+
 class Interest(models.Model):
     nominal = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
-    capitalizations= models.PositiveIntegerField(default=0)
+    capitalizations = models.PositiveIntegerField(default=0)
     efective = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
     periodic = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
 
@@ -63,6 +85,6 @@ class Interest(models.Model):
 class InterestForm(ModelForm):
     class Meta:
         model = Interest
-        fields = ['nominal', 'capitalizations','efective', 'periodic']
+        fields = ['nominal', 'capitalizations', 'efective', 'periodic']
 
 
