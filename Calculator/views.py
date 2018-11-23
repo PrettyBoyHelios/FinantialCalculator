@@ -18,7 +18,8 @@ def compare(request):
 
     # if all n's are equal
     for i, alt in enumerate(altList):
-        vnas[i] = np.npv(float(alt.interest), get_data(alt))
+        print(float(alt.interest))
+        vnas[i] = np.npv(float(alt.interest)/100, get_data(alt)) #it is already total vna
     print(vnas)
     return render(request, "Calculator/compare.html", context)
 

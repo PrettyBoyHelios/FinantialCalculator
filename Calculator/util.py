@@ -13,6 +13,7 @@ def get_data(alternative):
     net_flux = np_ea + np_op
     net_flux[alternative.n_periods-1] -= float(alternative.investment) * float(alternative.investment_payback) / 100
     net_flux = np.insert(net_flux,0, alternative.investment)
+    print("Net flux: ", net_flux)
     return net_flux
 
 def get_array(flux, periods):
