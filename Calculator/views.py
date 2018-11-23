@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from Calculator.models import ConversionForm, AlternativeForm, Alternative, Conversion, InterestForm, Interest
 import numpy as np
+import simplejson as json
+from .util import get_data, clean_data
 # Create your views here.
 
 def index(request):
@@ -11,17 +13,17 @@ def index(request):
 def compare(request):
     altList = Alternative.objects.filter(is_selected=True)
     context = {'alts': altList}
+    qty_alts = len(altList)
+    vnas = np.zeros(qty_alts)
 
-    currentAlt = altList[0]
-    # Logic for calculating values
-    arr = np.zeros(currentAlt.n_periods)
-    arr[0] = currentAlt.investment
-    print(arr)
-
+    # if all n's are equal
+    for i, alt in enumerate(altList):
+        vnas[i] = np.npv(float(alt.interest), get_data(alt))
+    print(vnas)
     return render(request, "Calculator/compare.html", context)
 
 def select_for_compare(request, id):
-    #select item by id
+    # select item by id
     alternative = Alternative.objects.get(pk=id)
     alternative.is_selected = True;
     alternative.save()
@@ -48,8 +50,9 @@ def create_alternative(request):
         form = AlternativeForm(request.POST)
         if form.is_valid():
             alternative = form.save(commit=False)
+            alternative.earnings = clean_data(alternative.earnings)
+            alternative.operative_costs = clean_data(alternative.operative_costs)
             alternative.save()
-            #return render(request, "Calculator/alternatives.html")
             return alternatives_list(request)
         else:
             return HttpResponse("Invalid form")

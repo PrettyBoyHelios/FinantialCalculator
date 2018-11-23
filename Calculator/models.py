@@ -16,11 +16,11 @@ class Alternative(models.Model):
     description = models.TextField(max_length=200, default="")
     interest = models.DecimalField(max_digits=4, decimal_places=2, default=1.00)
     interest_type = models.CharField(max_length=10, choices=INTEREST_TYPE, default='nominal')
-    operative_costs = models.DecimalField(max_digits=11, decimal_places=2, default=0.00)
     n_periods = models.PositiveIntegerField(default=1)
     investment = models.DecimalField(max_digits=11, decimal_places=2, default=0.00)
     investment_payback = models.DecimalField(max_digits=4, decimal_places=2, default=1.00)
     earnings = models.CharField(max_length=300, default='0.00')
+    operative_costs = models.CharField(max_length=300, default='0.00')
 
 
 class AlternativeForm(ModelForm):
@@ -28,7 +28,7 @@ class AlternativeForm(ModelForm):
 
     class Meta:
         model = Alternative
-        fields = ['name', 'description', 'interest', 'interest_type', 'operative_costs', 'n_periods', 'investment', 'investment_payback', 'earnings']
+        fields = ['name', 'description', 'interest', 'interest_type', 'n_periods', 'investment', 'investment_payback', 'earnings', 'operative_costs']
 
 
 class Conversion(models.Model):
