@@ -7,11 +7,15 @@
     <div class="container col-md-8" >
                 <h1>Interest Results</h1>
                 {% csrf_token %}
+        <br/>
         <li>Nominal Interest (%): {{ data.nominal }}</li>
         <li>Number of Capitalizations: {{ data.capitalizations }}</li>
         <li>Effective Interest (%): {{ data.efective }}</li>
         <li>Periodic Interest (%) : {{ data.periodic }}</li>
-
-
+        <br/>
+        <br/>
+         <form method="get" action="{% url "interest_conversions" %}" >
+            <button type="submit" class="btn btn-outline-dark">Return</button>
+        </form>
         </div>
 {% endblock %}
