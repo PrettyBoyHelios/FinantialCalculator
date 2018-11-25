@@ -10,10 +10,10 @@
                 {% csrf_token %}
                 <br/>
                 <br/>
-                <li>Nominal Interest (%): {{  form.nominal }}</li><br /><br />
-                <li>Number of Capitalizations: {{ form.capitalizations }}</li><br /><br />
-                <li>Effective Interest (%): {{ form.efective }}</li><br /><br />
-                <li>Periodic Interest (%) : {{ form.periodic }}</li><br /><br />
+                Nominal Interest (%): {{  form.nominal }}<br /><br />
+                Number of Capitalizations: {{ form.capitalizations }}<br /><br />
+                Effective Interest (%): {{ form.efective }}<br /><br />
+                Periodic Interest (%) : {{ form.periodic }}<br /><br />
 
                 <button type="submit" class="btn btn-outline-dark"> Calculate</button>
 

@@ -1,7 +1,7 @@
 from django.db import models
 from django.forms import ModelForm
 import decimal
-
+import numpy as np
 # Create your models here.
 INTEREST_TYPE = (
     ('p', 'period'),
