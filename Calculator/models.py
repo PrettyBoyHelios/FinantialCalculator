@@ -1,5 +1,6 @@
 from django.db import models
 from django.forms import ModelForm
+from django import forms
 import decimal
 import numpy as np
 # Create your models here.
@@ -29,6 +30,9 @@ class AlternativeForm(ModelForm):
     class Meta:
         model = Alternative
         fields = ['name', 'description', 'interest', 'interest_type', 'n_periods', 'investment', 'investment_payback', 'earnings', 'operative_costs']
+        widgets = {
+            'description': forms.Textarea(attrs={'rows': 4, 'cols': 15}),
+        }
 
 
 class Conversion(models.Model):
