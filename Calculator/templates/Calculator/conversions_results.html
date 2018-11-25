@@ -1,7 +1,30 @@
-<h1>Conversion results</h1>
+
+
+{%  extends "Calculator/header.html" %}
+{% block title %}
+    <title>Home</title>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="card col-md-6" style="width: 18rem;">
+          <div class="card-header">
+            Featured
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Interest: {{ conversion.interest }}</li>
+            <li class="list-group-item">Present value: {{ conversion.present_value }}</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+        </div>
+    </div>
+
+    <h1>Conversion results</h1>
 
 <li>Interest: {{ conversion.interest }}</li>
 <li>Number of periods: {{ conversion.number_periods }}</li>
 <li>Present value: {{ conversion.present_value }}</li>
 <li>Future value: {{ conversion.future_value }}</li>
 <li>Payment: {{ conversion.payment }}</li>
+
+<a class='btn btn-outline' href="{% url 'conversions' %}">Click here</a>
+{% endblock %}

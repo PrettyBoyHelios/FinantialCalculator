@@ -4,7 +4,7 @@
 {% endblock %}
 {% block content %}
     <br/>
-    <div class="container col-md-8" >
+    <div class="container col-sm-8" >
             <form method="post" action="{%  url "create_alternative" %}">
                 <h1>New Alternative</h1>
                 {% csrf_token %}
@@ -27,7 +27,10 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-outline-dark"> Create</button>
                 </div>{% endcomment %}
-                {{ form }}
+                <div class="form-group">
+                    {{ form.as_p }}
+                </div>
+
                 <button type="submit" class="btn btn-outline-dark"> Create</button>
 
             </form>
