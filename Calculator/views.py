@@ -121,7 +121,7 @@ def interest_conversions(request):
             else:
                 Error=True
         else:
-            return HttpResponse("Invalid form")
+            return render(request, 'Calculator/interest_formerror.html')
         if Error:
             return render(request, 'Calculator/interest_error.html')
 
@@ -154,9 +154,9 @@ def conversions(request):
                     'conversion': conversion
                 })
             else:
-                return HttpResponse('Invalid data')
+                return render(request, 'Calculator/conversions_error.html')
         else:
-            return HttpResponse('Invalid form')
+            return render(request, 'Calculator/conversions_formerror.html')
 
 
 def number_periods(request):
@@ -183,7 +183,7 @@ def number_periods(request):
                     'periods': periods
                 })
             else:
-                return HttpResponse('Invalid Data')
+                return render(request, 'Calculator/number_periods_error.html')
         else:
-            return HttpResponse('Invalid Form')
+            return render(request, 'Calculator/number_periods_formerror.html')
 
