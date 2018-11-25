@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     {% block title %}
-        <title>Yournals</title>
+        <title>FinCalc</title>
     {% endblock %}
 
     {% load static %}
@@ -24,37 +24,16 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
         * {
-            font-family: 'Noto Sans', sans-serif;
-
-        }
-        .navbar {
             font-family: 'Poppins', sans-serif;
         }
-      {% comment %}h1, body {
-        font-family: 'Dancing Script', cursive;
-      }
-      div.card {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      }
-      .carousel-inner{
-        width:100%;
-        max-height: 100vh !important;
-      }
-
-      card-body .h4 {
-        font-size: 28ox;
-      }
-      p {
-        font-size: 20ox;
-      }{% endcomment %}
+        div.card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
     </style>
 </head>
 <body class="body">
     <div>
         <nav class="navbar navbar-dark bg-dark sticky-top navbar-expand-lg justify-content-between">
-{% comment %}
-          <a class="navbar-brand" href="#"> <img src="../../static/images/favicon.png" width="25" height="25" class="d-inline-block align-top"/> Yournals</a>
-{% endcomment %}
             <a class="navbar-brand" href="#"> <img src="https://image.flaticon.com/icons/png/512/189/189093.png" width="25" height="25" class="d-inline-block align-top"/> FinCalc</a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,16 +45,16 @@
                 <a class="nav-link" href="/calc/"><i class="fas fa-home"></i> Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/calc/alt/"><i class="fas fa-chart-line"></i> Compare Alternatives</a>
+                <a class="nav-link" href="/calc/alt/"><i class="fas fa-chart-line"></i>  Compare Alternatives</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/calc/convert/"><i class="fas fa-calculator"></i> Conversions</a>
+                <a class="nav-link" href="/calc/convert/"><i class="fas fa-calculator"></i>  Conversions</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/calc/interest/"><i class="fas fa-coins"></i>  Interest Calculator </a>
               </li>
                 <li class="nav-item">
-                <a class="nav-link" href="/calc/periods/"><i class="fas fa-coins"></i>  Number of periods </a>
+                <a class="nav-link" href="/calc/periods/"><i class="far fa-calendar-check"></i></i>  Number of periods </a>
               </li>
             </ul>
           </div>
