@@ -1,8 +1,10 @@
 {%  extends "Calculator/header.html" %}
 {% block title %}
     <title>Home</title>
+    {% load static %}
 {% endblock %}
 {% block content %}
+
     <br/>
     <div class="container">
         <h1 style="display: inline-block;">
@@ -21,7 +23,7 @@
           <thead>
             <tr>
                 <th scope="col">Alternative Name</th>
-                <th scope="col">Description</th>
+                <th scope="col" style="{ max-width: 20% }">Description</th>
                 <th scope="col">Interest</th>
                 <th>Comparing</th>
             </tr>
@@ -29,17 +31,17 @@
           <tbody>
               {% for alt in alts %}
                   <tr>
-                      <th scope="col">{{ alt.name }}</th>
-                      <th scope="col">{{ alt.description }}</th>
-                      <th scope="col">{{ alt.interest }} % ({{ alt.get_interest_type_display }})</th>
-                      <th scope="col">
+                      <td scope="col">{{ alt.name }}</td>
+                      <td scope="col" style="{ max-width: 20% }">{{ alt.description }}</td>
+                      <td scope="col">{{ alt.interest }} % ({{ alt.get_interest_type_display }})</td>
+                      <td scope="col">
                           {% if alt.is_selected %}
                                 <input type="button" class="btn btn-outline-danger" value="Remove" onclick="location.href='{% url 'unselect_for_compare' id=alt.pk %}';"></input>
                           {% else %}
                                 <input type="button" class="btn btn-outline-success" value="Add" onclick="location.href='{% url 'select_for_compare' id=alt.pk %}';"></input>
                           {% endif %}
                           <input type="button" class="btn btn-outline-dark" value="Edit"></input>
-                      </th>
+                      </td>
                   </tr>
               {% endfor %}
           </tbody>

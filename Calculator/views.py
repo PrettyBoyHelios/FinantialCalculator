@@ -12,20 +12,45 @@ def index(request):
 
 def compare(request):
     altList = Alternative.objects.filter(is_selected=True)
-    context = {'alts': altList}
     qty_alts = len(altList)
-    vnas = np.zeros(qty_alts)
-    pmts = np.zeros(qty_alts)
 
-    # if all n's are equal
-    for i, alt in enumerate(altList):
-        print(float(alt.interest))
-        vnas[i] = np.npv(float(alt.interest)/100, get_data(alt)) #it is already total vna
-        pmts[i] = np.pmt(float(alt.interest)/100, alt.n_periods, vnas[i])
+    # arrays for calculated properties
+    if qty_alts>0:
+        vnas = np.zeros(qty_alts)
+        pmts = np.zeros(qty_alts)
 
-    
+        # n_periods validation
+        prev_n = altList[0].n_periods
+        flag_n = True # number of perods is the same for all alternatives
 
-    # if not all are equal
+        # if all n's are equal
+        for i, alt in enumerate(altList):
+            print(float(alt.interest))
+            if alt.n_periods != prev_n and flag_n:
+                flag_n = False # any element is different
+            vnas[i] = np.npv(float(alt.interest)/100, get_data(alt)) #it is already total vna
+            pmts[i] = np.pmt(float(alt.interest)/100, alt.n_periods, vnas[i])
+
+        res = list()
+        indices = list()
+        if flag_n:
+            res = np.sort(vnas)
+            indices = np.argsort(vnas)
+        else:
+            res = np.sort(pmts)
+            indices = np.argsort(pmts)
+        res = res[indices]
+
+        altList = [alt for alt in altList]
+        #altList = altList[indices]
+
+        orderedAltList = [altList[x] for x in indices]
+        best = Alternative()
+        if(len(altList)>0):
+            best = altList[indices[0]]
+        context = {'alts': altList, 'idx': indices, 'best': best, 'qty':len(altList)}
+    else:
+        context = {'qty': 0}
     return render(request, "Calculator/compare.html", context)
 
 def select_for_compare(request, id):
