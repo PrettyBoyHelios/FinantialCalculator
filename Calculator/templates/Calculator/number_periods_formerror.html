@@ -1,0 +1,27 @@
+{%  extends "Calculator/header.html" %}
+{% block title %}
+    <title>Interest</title>
+{% endblock %}
+{% block content %}
+    <br/>
+    <div class="container col-md-8" >
+
+    <div class="card border-danger mb-3" style="max-width: 30rem; font-size:16px">
+    <div class="card-header text-center">Error</div>
+    <div class="card-body text-danger text-center">
+        <br/>
+        Invalid Form<br/>
+        Check that you filled the fields with valid values
+        <br/>
+        <br/>
+        <br/>
+         <form method="get" action="{% url "number_periods" %}" >
+            <button type="submit" class="btn btn-outline-danger">Return</button>
+        </form>
+
+  </div>
+</div>
+
+{% endblock %}
+
+

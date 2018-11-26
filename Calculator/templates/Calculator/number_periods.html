@@ -6,11 +6,24 @@
 {% block content %}
     <br/>
     <div class="container col-md-8" >
+    <h1>Number of Periods</h1>
+        <br/>
+    <div class="card bg-light mb-3" style="width: 19rem;">
+    <div class="card-body">
+    <h7 class="card-title">This page allows you get the number of periods required for investments</h7>
+      <br/>
+      <br/>
+    <p class="card-text"><small><i> <b>Obligatory fields: </b> Interest and two other fields </i></small></p>
             <form method="post" action="{%  url "number_periods" %}">
-                <h1>Get periods</h1>
                 {% csrf_token %}
-                {{ form }}
-                <button type="submit" class="btn btn-outline-dark"> Calculate</button>
+                <br/>
+                Interest:           {{  form.interest }} %<br /><br />
+                Present Value ($):  {{ form.present_value }} MXN<br /><br />
+                Future Value ($):      {{ form.future_value}} MXN <br /><br />
+                Payment ($):            {{ form.payment }} MXN     <br /><br />
+                <button type="submit" class="btn btn-outline-dark" style="float: right"> Calculate </button>
             </form>
+         </div>
+    </div>
         </div>
 {% endblock %}

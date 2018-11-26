@@ -5,18 +5,24 @@
 {% block content %}
     <br/>
     <div class="container col-md-8" >
-            <form method="post" action="{%  url "interest_conversions" %}">
-                <h1>Interest Calculator</h1>
+    <h1>Interest Calculator</h1>
+         <br/>
+    <div class="card bg-light mb-3" style="width: 19rem;">
+    <div class="card-body">
+    <h7 class="card-title">This page allows you to calculate all the types of interest</h7>
+      <br/>
+      <br/>
+    <p class="card-text"><small><i> <b>Obligatory fields: </b> At least two fields </i></small></p>
+    <form method="post" action="{%  url "interest_conversions" %}">
                 {% csrf_token %}
                 <br/>
-                <br/>
-                Nominal Interest (%): {{  form.nominal }}<br /><br />
+                Nominal Interest: {{  form.nominal }} %<br /><br />
                 Number of Capitalizations: {{ form.capitalizations }}<br /><br />
-                Effective Interest (%): {{ form.efective }}<br /><br />
-                Periodic Interest (%) : {{ form.periodic }}<br /><br />
-
-                <button type="submit" class="btn btn-outline-dark"> Calculate</button>
-
+                Effective Interest: {{ form.efective }} %<br /><br />
+                Periodic Interest: {{form.periodic }} %<br /><br />
+                <button type="submit" class="btn btn-outline-dark" style="float: right"> Calculate </button>
             </form>
-        </div>
+    </div>
+    </div>
+    </div>
 {% endblock %}

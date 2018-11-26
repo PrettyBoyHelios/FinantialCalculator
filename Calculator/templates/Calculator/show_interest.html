@@ -5,17 +5,24 @@
 {% block content %}
     <br/>
     <div class="container col-md-8" >
-                <h1>Interest Results</h1>
-                {% csrf_token %}
-        <br/>
-        <li>Nominal Interest (%): {{ data.nominal }}</li>
-        <li>Number of Capitalizations: {{ data.capitalizations }}</li>
-        <li>Effective Interest (%): {{ data.efective }}</li>
-        <li>Periodic Interest (%) : {{ data.periodic }}</li>
+     <h1>Interest Results</h1>
+        {% csrf_token %}
+    <div class="card bg-light mb-3" style="max-width: 30rem; font-size:16px">
+  <div class="card-body">
+        <br/> <br/>
+        Nominal Interest: {{ data.nominal }} %<br/> <br/>
+        Number of Capitalizations: {{ data.capitalizations }} <br/> <br/>
+        Effective Interest: {{ data.efective }} % <br/> <br/>
+        Periodic Interest: {{ data.periodic }} %<br/> <br/>
         <br/>
         <br/>
          <form method="get" action="{% url "interest_conversions" %}" >
-            <button type="submit" class="btn btn-outline-dark">Return</button>
+            <button type="submit" class="btn btn-outline-dark" style="float: right">Return</button>
         </form>
-        </div>
+
+  </div>
+</div>
+
 {% endblock %}
+
+
