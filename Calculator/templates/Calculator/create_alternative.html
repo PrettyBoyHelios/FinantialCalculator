@@ -8,14 +8,18 @@
         <div class="card">
           <img class="card-img-top" src="https://first-business-travel.de/fbt2/file/8a118aac4d65b4bd014dbf00761e0d8c.en.0/app_neu.jpg" alt="Card image cap">
           <div class="card-body">
-            <form method="post" action="{%  url "create_alternative" %}">
-                <h1>New Alternative</h1>
+              {% if edit %}
+                  <form method="post" class="form-group" action="{%  url "edit_alternative" id=mod_id %}">
+              {% else %}
+                  <form method="post" class="form-group" action="{%  url "create_alternative" %}">
+              {% endif %}
+                <h1>{{ header }}</h1>
                 {% csrf_token %}
                 <div class="form-group">
                     {{ form.as_p }}
                 </div>
 
-                <button type="submit" class="btn btn-outline-dark" style="float: right"> Create</button>
+                <button type="submit" class="btn btn-outline-dark" style="float: right"> {{ action_str }}</button>
 
             </form>
 

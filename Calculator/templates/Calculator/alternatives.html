@@ -40,7 +40,7 @@
                           {% else %}
                                 <input type="button" class="btn btn-outline-success" value="Add" onclick="location.href='{% url 'select_for_compare' id=alt.pk %}';"></input>
                           {% endif %}
-                          <input type="button" class="btn btn-outline-dark" value="Edit"></input>
+                          <input type="button" class="btn btn-outline-dark" value="Edit" onclick="location.href='{% url 'edit_alternative' id=alt.pk %}';"></input>
                       </td>
                   </tr>
               {% endfor %}

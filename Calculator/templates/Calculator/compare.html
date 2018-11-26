@@ -23,37 +23,42 @@
         </div>
     {% else %}
         <div class="container" style="margin: 0 auto;">
-        <div class="card">
+        <div class="card text-white bg-success">
           <div class="card-header">
-            Best Option
+            Best Option!
           </div>
           <div class="card-body">
             <h5 class="card-title">{{ best.name }}</h5>
             <p class="card-text">{{ best.description }}</p>
-            <p class="card-text">{{ best.earnings }}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            {% load static %}
-          <img class="card-img-top" src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fmaxcdn.icons8.com%2Foffice%2FPNG%2F512%2FSports%2Ftrophy-512.png&f=1" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <p class="card-text">{{ alts.0.vna }}</p>
+            <table class="table">
+              <thead>
+                <!--<tr>
+                    <th scope="col">Alternative Name</th>
+                    <th scope="col" style="{ max-width: 20% }">Description</th>
+                    <th scope="col">Interest</th>
+                    <th>Comparing</th>
+                </tr>-->
+              </thead>
+              <tbody>
+                  {% for alt in alts %}
+
+                  {% endfor %}
+              </tbody>
+            </table>
           </div>
         </div>
         <div class="container"><br/></div>
             {% for alternative in alts %}
-                {% if alternative != best %}
+                {% if alternative.alt.pk != best.pk %}
                     <div class="card">
-                      <div class="card-header">
+                  <!--    <div class="card-header">
                         {{ alternative.name }}
-                      </div>
+                      </div>-->
                       <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h3 class="card-title">{{ alternative.alt.name }}</h3>
+                        <p class="card-text">{{ alternative.alt.description}}</p>
+                        <p class="card-text">{{ alternative.vna}}</p>
                       </div>
                     </div>
                     <div class="container"><br/></div>

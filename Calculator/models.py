@@ -29,9 +29,20 @@ class AlternativeForm(ModelForm):
 
     class Meta:
         model = Alternative
-        fields = ['name', 'description', 'interest', 'interest_type', 'n_periods', 'investment', 'investment_payback', 'earnings', 'operative_costs']
+        fields = ['name', 'description', 'interest', 'n_periods', 'investment', 'investment_payback', 'earnings', 'operative_costs']
+        labels = {
+            'name':'Project\'s Name',
+            'description': 'Description',
+            'interest': 'TREMA',
+            'n_periods': 'Number of Periods',
+            'earnings': 'Income',
+            'operative_costs': 'Expenses',
+            'investment_payback': 'Investment Payback (%)',
+
+        }
         widgets = {
-            'description': forms.Textarea(attrs={'rows': 4, 'cols': 15}),
+            'description': forms.Textarea(attrs={'rows': 2, 'cols': 40}),
+            'investment_payback': forms.NumberInput(attrs={'step': 0.1}),
         }
 
 
@@ -138,10 +149,18 @@ class Interest(models.Model):
         self.periodic = intPeriodo*100
 
 
-
 class InterestForm(ModelForm):
     class Meta:
         model = Interest
         fields = ['nominal', 'capitalizations', 'efective', 'periodic']
+
+
+class ViewAlternativeResult:
+    def __init__(self, alternative, vna, pmt):
+        self.alt = alternative
+        self.vna = vna
+        self.pmt = pmt
+        self.pk = alternative.pk
+
 
 

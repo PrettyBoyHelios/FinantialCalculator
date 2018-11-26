@@ -16,6 +16,14 @@ def get_data(alternative):
     #print("Net flux: ", net_flux)
     return net_flux
 
+def get_flux(alternative):
+    np_ea = json.loads(alternative.earnings)
+    np_op = json.loads(alternative.operative_costs)
+
+    np_ea = get_array(alternative.earnings, alternative.n_periods)
+    np_op = get_array(alternative.operative_costs, alternative.n_periods)
+    return np_ea, np_op
+
 
 def get_array(flux, periods):
     mp_array = json.loads(flux)
@@ -28,8 +36,10 @@ def get_array(flux, periods):
 
 
 def clean_data(alt_string):
-    red_string = alt_string.replace(" ", "")
-    split_op = red_string.split(",")
+    alt_string = alt_string.replace(" ", "")
+    alt_string = alt_string.replace("[", "")
+    alt_string = alt_string.replace("]", "")
+    split_op = alt_string.split(",")
     #print("split", split_op)
-    num_split = [float(x) for x in split_op]
+    num_split = [round(float(x), 2) for x in split_op]
     return json.dumps(num_split)

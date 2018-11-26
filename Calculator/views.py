@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
 from Calculator.models import *
@@ -6,7 +6,6 @@ import numpy as np
 import simplejson as json
 from .util import get_data, clean_data
 
-# Create your views here.
 
 def index(request):
     return render(request, "Calculator/index.html")
@@ -44,16 +43,18 @@ def compare(request):
         res = res[indices]
 
         altList = [alt for alt in altList]
-        #altList = altList[indices]
-
         orderedAltList = [altList[x] for x in indices]
+        viewList = [ViewAlternativeResult(orderedAltList[i], vnas[i], pmts[i]) for i in range(qty_alts)]
+
+
         best = Alternative()
-        if(len(altList)>0):
+        if len(altList)>0:
             best = altList[indices[0]]
-        context = {'alts': altList, 'idx': indices, 'best': best, 'qty':len(altList)}
+        context = {'alts': viewList, 'best': best, 'qty':len(altList)}
     else:
         context = {'qty': 0}
     return render(request, "Calculator/compare.html", context)
+
 
 def select_for_compare(request, id):
     # select item by id
@@ -62,6 +63,7 @@ def select_for_compare(request, id):
     alternative.save()
     return alternatives_list(request)
 
+
 def unselect_for_compare(request, id):
     #unselect item by id
     alternative = Alternative.objects.get(pk=id)
@@ -69,16 +71,42 @@ def unselect_for_compare(request, id):
     alternative.save()
     return alternatives_list(request)
 
+
 def alternatives_list(request):
     altList = Alternative.objects.all()
     context = {'alts': altList }
     return render(request, "Calculator/alternatives.html", context)
 
 
+def edit_alternative(request, id):
+    print(request.method)
+    model = get_object_or_404(Alternative, pk=id)
+    if request.method == 'GET':
+
+        print(model)
+        form = AlternativeForm(instance=model)
+        header = 'Edit Alternative'
+        action_str = ' Save'
+        return render(request, "Calculator/create_alternative.html", {'form': form, 'header': header, 'action_str': action_str, 'edit': True, 'mod_id': model.pk })
+    else:
+        form = AlternativeForm(request.POST)
+        if form.is_valid():
+            alternative = form.save(commit=False)
+            alternative.pk = id
+            alternative.earnings = clean_data(alternative.earnings)
+            alternative.operative_costs = clean_data(alternative.operative_costs)
+            alternative.save()
+            return alternatives_list(request)
+        else:
+            return HttpResponse("Invalid form")
+
+
 def create_alternative(request):
     if request.method == 'GET':
         form = AlternativeForm()
-        return render(request, "Calculator/create_alternative.html", {'form': form})
+        header = ' Create Alternative'
+        action_str = ' Create'
+        return render(request, "Calculator/create_alternative.html", {'form': form, 'header': header, 'action_str': action_str, 'edit': False })
     else:
         form = AlternativeForm(request.POST)
         if form.is_valid():
