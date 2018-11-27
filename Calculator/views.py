@@ -19,6 +19,7 @@ def compare(request):
     if qty_alts>0:
         vnas = np.zeros(qty_alts)
         pmts = np.zeros(qty_alts)
+        irr = np.zeros(qty_alts)
 
         # n_periods validation
         prev_n = altList[0].n_periods
@@ -31,26 +32,33 @@ def compare(request):
                 flag_n = False # any element is different
             vnas[i] = np.npv(float(alt.interest)/100, get_data(alt)) #it is already total vna
             pmts[i] = np.pmt(float(alt.interest)/100, alt.n_periods, vnas[i])
+            irr[i] = np.irr(get_data(alt))
+        print(flag_n,irr, get_data(alt))
 
         res = list()
         indices = list()
         if flag_n:
-            res = np.sort(vnas)
             indices = np.argsort(vnas)
+            #res = np.sort(vnas)
         else:
-            res = np.sort(pmts)
             indices = np.argsort(pmts)
-        res = res[indices]
+            #res = np.sort(pmts)
 
+        print('idx', indices)
+        #res = res[indices]
+        #irr = irr[indices]
         altList = [alt for alt in altList]
-        orderedAltList = [altList[x] for x in indices]
-        viewList = [ViewAlternativeResult(orderedAltList[i], vnas[i], pmts[i]) for i in range(qty_alts)]
+        for alt in altList:
+            print(alt.name)
+        #orderedAltList = [altList[x] for x in indices]
+        viewList = [ViewAlternativeResult(altList[i], vnas[i], pmts[i], irr[i]) for i in range(qty_alts)]
 
-
-        best = Alternative()
-        if len(altList)>0:
-            best = altList[indices[0]]
-        context = {'alts': viewList, 'best': best, 'qty':len(altList)}
+        for alr in viewList:
+            print(alr.alt.earnings)
+        best = viewList[0]
+        # if len(altList)>0:
+        #     best = altList[indices[0]]
+        context = {'alts': viewList, 'best': best, 'qty': len(altList)}
     else:
         context = {'qty': 0}
     return render(request, "Calculator/compare.html", context)

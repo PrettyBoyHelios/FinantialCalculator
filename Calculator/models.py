@@ -3,6 +3,7 @@ from django.forms import ModelForm
 from django import forms
 import decimal
 import numpy as np
+import locale
 # Create your models here.
 INTEREST_TYPE = (
     ('p', 'period'),
@@ -156,11 +157,16 @@ class InterestForm(ModelForm):
 
 
 class ViewAlternativeResult:
-    def __init__(self, alternative, vna, pmt):
+    def __init__(self, alternative, vna, pmt, irr):
+        locale.setlocale(locale.LC_ALL, 'en_CA.UTF-8')
         self.alt = alternative
-        self.vna = vna
-        self.pmt = pmt
+        self.vna = locale.currency(round(vna, 2), grouping=True)
+        self.pmt = locale.currency(round(pmt, 2), grouping=True)
         self.pk = alternative.pk
+        if irr == np.nan:
+            self.irr = None
+        else:
+            self.irr = round(irr, 2)
 
 
 

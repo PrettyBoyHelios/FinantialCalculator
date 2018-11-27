@@ -28,24 +28,32 @@
             Best Option!
           </div>
           <div class="card-body">
-            <h5 class="card-title">{{ best.name }}</h5>
-            <p class="card-text">{{ best.description }}</p>
-            <p class="card-text">{{ alts.0.vna }}</p>
-            <table class="table">
-              <thead>
-                <!--<tr>
-                    <th scope="col">Alternative Name</th>
-                    <th scope="col" style="{ max-width: 20% }">Description</th>
-                    <th scope="col">Interest</th>
-                    <th>Comparing</th>
-                </tr>-->
-              </thead>
-              <tbody>
-                  {% for alt in alts %}
+            <h5 class="card-title">{{ best.alt.name }}</h5>
+            <p class="card-text">{{ best.alt.description }}</p>
+             <table class="table">
+                  <thead>
 
-                  {% endfor %}
-              </tbody>
-            </table>
+                  </thead>
+                  <tbody>
+                    <tr>
+                        <td>Total Present Net Value</td>
+                        <td>{{ best.vna}} MXN</td>
+                    </tr>
+                    <tr>
+                        <td>Anual Equivalent Value</td>
+                        <td>{{ best.pmt}} MXN</td>
+                    </tr>
+                  <tr>
+                        <td>Interest Rate of Return</td>
+                        {% if best.irr == None %}
+                            <td>{{ best.irr}} %</td>
+                        {% else %}
+                            <td>N/A</td>
+                        {% endif %}
+
+                    </tr>
+                  </tbody>
+              </table>
           </div>
         </div>
         <div class="container"><br/></div>
@@ -58,7 +66,31 @@
                       <div class="card-body">
                         <h3 class="card-title">{{ alternative.alt.name }}</h3>
                         <p class="card-text">{{ alternative.alt.description}}</p>
-                        <p class="card-text">{{ alternative.vna}}</p>
+                          <table class="table">
+                              <thead>
+
+                              </thead>
+                              <tbody>
+                                <tr>
+                                    <td>Total Present Net Value</td>
+                                    <td>{{ alternative.vna}} MXN</td>
+                                </tr>
+                                <tr>
+                                    <td>Anual Equivalent Value</td>
+                                    <td>{{ alternative.pmt}} MXN</td>
+                                </tr>
+                                <tr>
+                                    <td>Interest Rate of Return</td>
+                                    {% if alternative.irr != None %}
+                                        <td>{{ alternative.irr}} %</td>
+                                    {% else %}
+                                        <td>N/A</td>
+                                    {% endif %}
+                                </tr>
+
+                              </tbody>
+                          </table>
+                        <p class="card-text"></p>
                       </div>
                     </div>
                     <div class="container"><br/></div>

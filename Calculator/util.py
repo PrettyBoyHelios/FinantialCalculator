@@ -10,9 +10,10 @@ def get_data(alternative):
     np_ea = get_array(alternative.earnings, alternative.n_periods)
     np_op = get_array(alternative.operative_costs, alternative.n_periods)
 
-    net_flux = np_ea + np_op
+    net_flux = np_ea - np_op
     net_flux[alternative.n_periods-1] -= float(alternative.investment) * float(alternative.investment_payback) / 100
-    net_flux = np.insert(net_flux,0, alternative.investment)
+    net_flux = np.insert(net_flux, 0, -alternative.investment)
+    #print('income and outcome: ', np_ea, np_op)
     #print("Net flux: ", net_flux)
     return net_flux
 
