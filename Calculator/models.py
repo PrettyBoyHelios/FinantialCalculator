@@ -4,6 +4,7 @@ from django import forms
 import decimal
 import numpy as np
 import locale
+from babel.numbers import format_currency
 # Create your models here.
 INTEREST_TYPE = (
     ('p', 'period'),
@@ -158,10 +159,10 @@ class InterestForm(ModelForm):
 
 class ViewAlternativeResult:
     def __init__(self, alternative, vna, pmt, irr):
-        locale.setlocale(locale.LC_ALL, 'en_CA.UTF-8')
+        #locale.setlocale(locale.LC_ALL, 'en_CA.UTF-8')
         self.alt = alternative
-        self.vna = locale.currency(round(vna, 2), grouping=True)
-        self.pmt = locale.currency(round(pmt, 2), grouping=True)
+        self.vna = format_currency(round(vna, 2), 'USD', locale='en_US')
+        self.pmt = format_currency(round(pmt, 2), 'USD', locale='en_US')
         self.pk = alternative.pk
         if irr == np.nan:
             self.irr = None
