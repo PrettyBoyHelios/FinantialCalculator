@@ -33,31 +33,18 @@ def compare(request):
             vnas[i] = np.npv(float(alt.interest)/100, get_data(alt)) #it is already total vna
             pmts[i] = np.pmt(float(alt.interest)/100, alt.n_periods, vnas[i])
             irr[i] = np.irr(get_data(alt))
-        print(flag_n,irr, get_data(alt))
 
-        res = list()
-        indices = list()
         if flag_n:
             indices = np.argsort(vnas)
-            #res = np.sort(vnas)
         else:
             indices = np.argsort(pmts)
-            #res = np.sort(pmts)
 
-        print('idx', indices)
-        #res = res[indices]
-        #irr = irr[indices]
         altList = [alt for alt in altList]
-        for alt in altList:
-            print(alt.name)
-        #orderedAltList = [altList[x] for x in indices]
         viewList = [ViewAlternativeResult(altList[i], vnas[i], pmts[i], irr[i]) for i in range(qty_alts)]
 
         for alr in viewList:
             print(alr.alt.earnings)
         best = viewList[0]
-        # if len(altList)>0:
-        #     best = altList[indices[0]]
         context = {'alts': viewList, 'best': best, 'qty': len(altList)}
     else:
         context = {'qty': 0}

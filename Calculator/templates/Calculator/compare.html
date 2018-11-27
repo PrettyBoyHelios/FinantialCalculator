@@ -11,7 +11,7 @@
     </div>
     {% if qty < 1 %}
         <div class="container" style="margin: 0 auto;">
-        <div class="card">
+        <div class="card col-sm-8">
           <div class="card-header">
             No options to display.
           </div>
@@ -32,7 +32,9 @@
             <p class="card-text">{{ best.alt.description }}</p>
              <table class="table">
                   <thead>
-
+                    <tr>
+                      <th colspan="2"> Info</th>
+                    </tr>
                   </thead>
                   <tbody>
                     <tr>
@@ -68,7 +70,9 @@
                         <p class="card-text">{{ alternative.alt.description}}</p>
                           <table class="table">
                               <thead>
-
+                                <tr>
+                                  <th colspan="2"> Info</th>
+                                </tr>
                               </thead>
                               <tbody>
                                 <tr>

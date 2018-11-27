@@ -4,12 +4,50 @@
 {% endblock %}
 {% block content %}
 <div class="jumbotron">
-  <h1 class="display-4">This is a Financial Calculator</h1>
-  <p class="lead">Calculate your future</p>
+  <h1 class="display-4">FinCalc</h1>
+  <p class="lead">The only calculator you'll be happy to use</p>
   <hr class="my-4">
-  <p>You can perform simple conversions and evaluate and compare multiple investment alternatives!</p>
+  <p>And it's OpenSource!</p>
   <p class="lead">
-    <a class="btn btn-outline-dark btn-lg" href="#" role="button">Learn more</a>
+    <a class="btn btn-outline-dark btn-lg" href="https://github.com/luis9614/FinantialCalculator" role="button"><i class="fab fa-github"></i> GitHub</a>
   </p>
+</div>
+<div class="container">
+    <div class="card-deck">
+      <div class="card">
+        <img class="card-img-top" src="http://media.corporate-ir.net/media_files/IROL/79/79678/2015/images/ir-events.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Analize your future</h5>
+          <p class="card-text">Make smart choices using our tools for project analysis. It has never been easier.</p>
+{% comment %}
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+{% endcomment %}
+            <a class="btn btn-outline-dark btn-lg" href="{% url  "alternatives" %}" role="button">Check out</a>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="https://www.companycapital.ca/wp-content/uploads/2018/01/do-the-math.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Conversions made easy</h5>
+          <p class="card-text">Focus on your projects and let us worry about the math.</p>
+            <a class="btn btn-outline-dark btn-lg" href="{% url  "conversions" %}" role="button">Check out</a>
+
+{% comment %}
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+{% endcomment %}
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="https://cdn.lifehack.org/wp-content/uploads/2014/06/00-Spreadsheet.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">The future at your fingertips</h5>
+          <p class="card-text"> Evaluate the return for your projects in an elegant and efficient manner.</p>
+            <a class="btn btn-outline-dark btn-lg" href="{% url  "number_periods" %}" role="button">Check out</a>
+{% comment %}
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+{% endcomment %}
+        </div>
+      </div>
+    </div>
 </div>
 {% endblock %}
