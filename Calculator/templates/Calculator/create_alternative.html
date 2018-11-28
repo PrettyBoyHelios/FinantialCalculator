@@ -4,7 +4,7 @@
 {% endblock %}
 {% block content %}
 
-{% comment %}    <div class="container">
+    <div class="container">
         <div class="card">
           <img class="card-img-top" src="https://first-business-travel.de/fbt2/file/8a118aac4d65b4bd014dbf00761e0d8c.en.0/app_neu.jpg" alt="Card image cap">
           <div class="card-body">
@@ -25,8 +25,8 @@
 
           </div>
         </div>
-    </div>{% endcomment %}
-    <div class="container">
+    </div>
+ {% comment %}   <div class="container">
         <div class="card">
           <img class="card-img-top" src="https://first-business-travel.de/fbt2/file/8a118aac4d65b4bd014dbf00761e0d8c.en.0/app_neu.jpg" alt="Card image cap">
           <div class="card-body">
@@ -60,7 +60,7 @@
                 0.00</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="id_operative_costs">Expenses:</label> <textarea class="form-control" name="operative_costs" cols="80" rows="1" maxlength="300" required id="id_operative_costs">0.00</textarea>
+                    <label for="id_operative_costs">Expenses:</label> <textarea class="form-control" name="operative_costs" cols="80" rows="1" maxlength="300" required id="id_operative_costs">{{ form.operative_costs. }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-outline-dark" style="float: right"> {{ action_str }}</button>
 
@@ -68,7 +68,7 @@
 
           </div>
         </div>
-    </div>
+    </div>{% endcomment %}
     <div>
         <br/>
     </div>
