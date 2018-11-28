@@ -43,8 +43,10 @@ class AlternativeForm(ModelForm):
 
         }
         widgets = {
-            'description': forms.Textarea(attrs={'rows': 2, 'cols': 40}),
+            'description': forms.Textarea(attrs={'rows': 3, 'cols': 40}),
             'investment_payback': forms.NumberInput(attrs={'step': 0.1}),
+            'earnings': forms.Textarea(attrs={'rows': 1, 'cols': 80}),
+            'operative_costs': forms.Textarea(attrs={'rows': 1, 'cols': 80}),
         }
 
 

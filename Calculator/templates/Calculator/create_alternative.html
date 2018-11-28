@@ -4,7 +4,7 @@
 {% endblock %}
 {% block content %}
 
-    <div class="container">
+{% comment %}    <div class="container">
         <div class="card">
           <img class="card-img-top" src="https://first-business-travel.de/fbt2/file/8a118aac4d65b4bd014dbf00761e0d8c.en.0/app_neu.jpg" alt="Card image cap">
           <div class="card-body">
@@ -19,6 +19,49 @@
                     {{ form.as_p }}
                 </div>
 
+                <button type="submit" class="btn btn-outline-dark" style="float: right"> {{ action_str }}</button>
+
+            </form>
+
+          </div>
+        </div>
+    </div>{% endcomment %}
+    <div class="container">
+        <div class="card">
+          <img class="card-img-top" src="https://first-business-travel.de/fbt2/file/8a118aac4d65b4bd014dbf00761e0d8c.en.0/app_neu.jpg" alt="Card image cap">
+          <div class="card-body">
+              {% if edit %}
+                  <form method="post" class="form-group" action="{%  url "edit_alternative" id=mod_id %}">
+              {% else %}
+                  <form method="post" class="form-group" action="{%  url "create_alternative" %}">
+              {% endif %}
+                <h1>{{ header }}</h1>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_name">Project&#39;s Name:</label> <input class="form-control" type="text" name="name" value="Test" maxlength="50" required id="id_name">
+                </div>
+                <div class="form-group">
+                    <label for="id_description">Description:</label> <textarea class="form-control" name="description" cols="40" rows="3" maxlength="200" required id="id_description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="id_interest">TREMA:</label> <input class="form-control" type="number" name="interest" value="1.0" step="0.01" required id="id_interest"></p>
+                </div>
+                <div class="form-group">
+                    <label for="id_n_periods">Number of Periods:</label> <input class="form-control" type="number" name="n_periods" value="1" min="0" required id="id_n_periods"></p>
+                </div>
+                <div class="form-group">
+                    <label for="id_investment">Investment:</label> <input class="form-control" type="number" name="investment" value="0.0" step="0.01" required id="id_investment"></p>
+                </div>
+                <div class="form-group">
+                    <label for="id_investment_payback">Investment Payback (%):</label> <input class="form-control" type="number" name="investment_payback" value="1.0" step="0.1" required id="id_investment_payback"></p>
+                </div>
+                <div class="form-group">
+                    <label for="id_earnings">Income:</label> <textarea class="form-control" name="earnings" cols="80" rows="1" maxlength="300" required id="id_earnings">
+                0.00</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="id_operative_costs">Expenses:</label> <textarea class="form-control" name="operative_costs" cols="80" rows="1" maxlength="300" required id="id_operative_costs">0.00</textarea>
+                </div>
                 <button type="submit" class="btn btn-outline-dark" style="float: right"> {{ action_str }}</button>
 
             </form>

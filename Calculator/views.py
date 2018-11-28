@@ -46,12 +46,18 @@ def compare(request):
 
 
         if flag_n:
-            indices = np.argsort(vnas)[::-1]
+            indices = np.argsort(vnas)
+            print('s ', indices)
+            indices = indices[::-1]
+            print('si ', indices)
         else:
-            indices = np.argsort(pmts)[::-1]
+            indices = np.argsort(pmts)
+            print('s ', indices)
+            indices = indices[::-1]
+            print('si ', indices)
 
         altList = [alt for alt in altList]
-        viewList = [ViewAlternativeResult(altList[i], vnas[i], pmts[i], irr[i]) for i in range(qty_alts)]
+        viewList = [ViewAlternativeResult(altList[i], vnas[i], pmts[i], irr[i]) for i in indices]
 
         #for alr in viewList:
         #    print(alr.alt.earnings)
@@ -117,6 +123,7 @@ def create_alternative(request):
         form = AlternativeForm()
         header = ' Create Alternative'
         action_str = ' Create'
+        print(form.as_p())
         return render(request, "Calculator/create_alternative.html", {'form': form, 'header': header, 'action_str': action_str, 'edit': False })
     else:
         form = AlternativeForm(request.POST)
