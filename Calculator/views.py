@@ -33,19 +33,34 @@ def compare(request):
             vnas[i] = np.npv(float(alt.interest)/100, get_data(alt)) #it is already total vna
             pmts[i] = np.pmt(float(alt.interest)/100, alt.n_periods, vnas[i])
             irr[i] = np.irr(get_data(alt))
+            aux_flux = get_data(alt)
+            print(len(aux_flux))
+            if len(aux_flux) == 1:
+                vnas[i] = aux_flux[0]  # it is already total vna
+                pmts[i] = aux_flux[0]
+                irr[i] = 0.00
+            else:
+                vnas[i] = np.npv(float(alt.interest) / 100, get_data(alt))  # it is already total vna
+                pmts[i] = np.pmt(float(alt.interest) / 100, alt.n_periods, vnas[i])
+                irr[i] = np.irr(get_data(alt))
+
 
         if flag_n:
-            indices = np.argsort(vnas)
+            indices = np.argsort(vnas)[::-1]
         else:
-            indices = np.argsort(pmts)
+            indices = np.argsort(pmts)[::-1]
 
         altList = [alt for alt in altList]
         viewList = [ViewAlternativeResult(altList[i], vnas[i], pmts[i], irr[i]) for i in range(qty_alts)]
 
-        for alr in viewList:
-            print(alr.alt.earnings)
+        #for alr in viewList:
+        #    print(alr.alt.earnings)
+        if flag_n:
+            reason = ' Net Present Value, as their number of periods is the same.'
+        else:
+            reason = ' the Annual Equivalent Value, as their number of periods is different.'
         best = viewList[0]
-        context = {'alts': viewList, 'best': best, 'qty': len(altList)}
+        context = {'alts': viewList, 'best': best, 'qty': len(altList), 'reason': reason}
     else:
         context = {'qty': 0}
     return render(request, "Calculator/compare.html", context)
@@ -90,6 +105,7 @@ def edit_alternative(request, id):
             alternative.pk = id
             alternative.earnings = clean_data(alternative.earnings)
             alternative.operative_costs = clean_data(alternative.operative_costs)
+            print(alternative)
             alternative.save()
             return alternatives_list(request)
         else:
